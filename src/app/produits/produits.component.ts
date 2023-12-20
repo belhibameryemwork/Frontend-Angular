@@ -16,10 +16,13 @@ export class ProduitsComponent implements OnInit{
   {}
   produits: Array<Produit> = [];
   produitEdite: Produit | null = null;
+<<<<<<< HEAD
 
   filtreCategorie: Categorie | string | null = null;
 
   filtrePrix: number | null = null;
+=======
+>>>>>>> 6e5d20bba7c002691fbb22a23e0c9d56e1216018
   
     categories: Categorie[] = [];
     nouveauProduit: Produit = {
@@ -54,6 +57,7 @@ export class ProduitsComponent implements OnInit{
     }
 
     supprimerProduit(produit: Produit) {
+<<<<<<< HEAD
       const confirmation = confirm("Voulez-vous supprimer le produit :" + produit.designation + " ?");
       if (confirmation) {
         this.produitsService.deleteProduit(produit.id).subscribe({
@@ -120,6 +124,52 @@ export class ProduitsComponent implements OnInit{
       });
     }
   
+=======
+      let reponse: boolean = confirm("Voulez-vous supprimer le produit :" + produit.designation + " ?");
+      if (reponse == true) {
+        console.log("Suppression confirmée...");
+  
+        // Utilisez la méthode deleteProduit existante du service pour supprimer le produit
+        this.produitsService.deleteProduit(produit.id)
+          .subscribe({
+            next: () => {
+              console.log("Succès DELETE");
+  
+              // Retirez le produit du tableau local
+              const index = this.produits.indexOf(produit);
+              if (index !== -1) {
+                this.produits.splice(index, 1);
+              }
+            },
+            error: err => {
+              console.log("Erreur DELETE");
+            }
+          });
+      } else {
+        console.log("Suppression annulée...");
+      }
+    }
+
+    consulterProduits()
+    {
+      console.log("Récupérer la liste des produits");
+      //Appeler la méthode 'getProduits' du service pour récupérer les données du JSON
+      this.produitsService.getProduits()
+      .subscribe(
+        {
+          //En cas de succès
+          next: data => {
+            console.log("Succès GET");
+            this.produits=data;
+          },
+          //En cas d'erreur
+          error: err => {
+            console.log("Erreur GET");
+          }
+        }
+      ) 
+    }
+>>>>>>> 6e5d20bba7c002691fbb22a23e0c9d56e1216018
 
   validerFormulaire(form: NgForm) {
     console.log(form.value);

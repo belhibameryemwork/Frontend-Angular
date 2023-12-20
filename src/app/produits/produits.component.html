@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container mt-5">
   <h1 class="mb-4">Filtrer les produits</h1>
 
@@ -19,6 +20,8 @@
     </div>
   </div>
 </div>
+=======
+>>>>>>> 6e5d20bba7c002691fbb22a23e0c9d56e1216018
 <div *ngIf="produitEdite" class="container mt-5">
   <h1>Editer le produit</h1>
   <form>
@@ -75,7 +78,11 @@
       </tr>
     </thead>
     <tbody>
+<<<<<<< HEAD
       <tr *ngFor="let p of filtrerProduits(produits, filtreCategorie, filtrePrix)">
+=======
+      <tr *ngFor="let p of produits">
+>>>>>>> 6e5d20bba7c002691fbb22a23e0c9d56e1216018
         <td> {{p.id}} </td>
         <td> {{p.code}} </td>
         <td> {{p.designation}} </td>
